@@ -1,12 +1,14 @@
 {
-  "dbUrl": "jdbc:mysql://localhost:3306/device_manage",
-  "driverClassName": "com.mysql.jdbc.Driver",
-  "username": "root",
-  "password": "root",
+  "dataSources": [{
+    "name": "mysql",
+    "configPath": "/home/bigmamonkey/github/db-generate/src/main/resources/dataSources/mysql.json",
+    "dataSourceClassName": "org.bigmamonkey.dataSource.MySqlDataSource"
+  }],
+
   "templates": [{
     "name": "",
-    "templatePath": "",
-    "outputPath": "",
-    "options":{}
+    "dataSourceName": "mysql",
+    "templateFilename": "",
+    "outputPath": ""
   }]
 }
