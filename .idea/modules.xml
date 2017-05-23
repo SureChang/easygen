@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/db-generate.iml" filepath="$PROJECT_DIR$/db-generate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easygen.iml" filepath="$PROJECT_DIR$/easygen.iml" />
     </modules>
   </component>
 </project>

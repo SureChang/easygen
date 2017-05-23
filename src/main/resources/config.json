@@ -1,7 +1,7 @@
 {
   "dataSources": [{
     "name": "mysql",
-    "configPath": "/home/bigmamonkey/github/db-generate/src/main/resources/dataSources/mysql.json",
+    "configPath": "/home/bigmamonkey/github/easygen/src/main/resources/dataSources/mysql.json",
     "dataSourceClassName": "org.bigmamonkey.dataSource.MySqlDataSource"
   }],
 

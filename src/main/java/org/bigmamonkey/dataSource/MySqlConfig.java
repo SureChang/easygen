@@ -1,4 +1,4 @@
-package org.bigmamonkey.config;
+package org.bigmamonkey.dataSource;
 
 /**
  * Created by bigmamonkey on 5/22/17.

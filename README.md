@@ -1,2 +1,3 @@
-# db-generate
-an flexible tool for generate code base db metadata
+# easygen
+
+an flexible code generate framework

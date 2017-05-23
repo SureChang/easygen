@@ -13,7 +13,8 @@ public class ConfigReader {
 
         File file = new File(path);
         if (!file.exists()) {
-            throw new Exception("can not find the config file with name config.json..");
+            String errMsg = String.format("config file at {%s} not exist..", path);
+            throw new Exception(errMsg);
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -22,7 +23,8 @@ public class ConfigReader {
             config = objectMapper.readValue(file, type);
             return config;
         } catch (IOException e) {
-            throw new Exception("read config file exception..", e);
+            String errMsg = String.format("read config file {%s} exception..", path);
+            throw new Exception(errMsg, e);
         }
     }
 }

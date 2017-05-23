@@ -1,21 +1,13 @@
 package org.bigmamonkey.dataSource;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.bigmamonkey.config.Config;
-import org.bigmamonkey.config.DataSourceConfig;
-import org.bigmamonkey.config.MySqlConfig;
 import org.bigmamonkey.core.IDataSource;
 
-import java.io.File;
-import java.io.IOException;
 import java.sql.*;
 
 /**
  * Created by bigmamonkey on 5/22/17.
  */
 public class MySqlDataSource implements IDataSource<MySqlConfig> {
-
-    private static DatabaseMetaData dbMetaData;
 
     public Object loadDataSource(MySqlConfig config) throws Exception {
 
@@ -28,8 +20,9 @@ public class MySqlDataSource implements IDataSource<MySqlConfig> {
         Connection connection;
         try {
             connection = DriverManager.getConnection(config.getDbUrl(), config.getUsername(), config.getPassword());
-            dbMetaData = connection.getMetaData();
-            getTableColumns(null, "sys_user");
+            DatabaseMetaData dbMetaData = connection.getMetaData();
+
+            getTableColumns(dbMetaData, null, "sys_user");
         } catch (SQLException e) {
             throw new Exception("load database metadata exception..", e);
         }
@@ -47,7 +40,7 @@ public class MySqlDataSource implements IDataSource<MySqlConfig> {
     /**
      * 获得该用户下面的所有表
      */
-    private static void LoadGenerateMetaData(String schemaName) {
+    private static void LoadGenerateMetaData(DatabaseMetaData dbMetaData, String schemaName) {
         try {
             // table type. Typical types are "TABLE", "VIEW", "SYSTEM TABLE", "GLOBAL TEMPORARY", "LOCAL TEMPORARY", "ALIAS", "SYNONYM".
             String[] types = { "TABLE" };
@@ -66,10 +59,9 @@ public class MySqlDataSource implements IDataSource<MySqlConfig> {
     /**
      * 获得表或视图中的所有列信息
      */
-    public static void getTableColumns(String schemaName, String tableName) {
+    public static void getTableColumns(DatabaseMetaData dbMetaData, String schemaName, String tableName) {
 
         try{
-
             ResultSet rs = dbMetaData.getColumns(null, schemaName, tableName, "%");
             while (rs.next()){
                 String tableCat = rs.getString("TABLE_CAT");//表目录（可能为空）
@@ -119,7 +111,7 @@ public class MySqlDataSource implements IDataSource<MySqlConfig> {
     /**
      * 获得一个表的主键信息
      */
-    public static void getAllPrimaryKeys(String schemaName, String tableName) {
+    public static void getAllPrimaryKeys(DatabaseMetaData dbMetaData, String schemaName, String tableName) {
         try{
             ResultSet rs = dbMetaData.getPrimaryKeys(null, schemaName, tableName);
             while (rs.next()){

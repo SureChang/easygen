@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,16 +29,9 @@ public class GeneratorManager {
         this.configPath = configPath;
     }
 
-    public void Start() {
+    public void Start() throws Exception {
 
-        Config config;
-        try {
-            config = ConfigReader.getConfig(Config.class, configPath);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            return;
-        }
+        Config config = ConfigReader.getConfig(Config.class, configPath);
 
         for (DataSourceConfig dataSourceConfig : config.getDataSources()) {
             dataSourceConfigs.put(dataSourceConfig.getName(), dataSourceConfig);
@@ -49,65 +41,32 @@ public class GeneratorManager {
         for (TemplateConfig template : templates) {
             String dataSourceName = template.getDataSourceName();
             if (!dataSourceConfigs.containsKey(dataSourceName)) {
-                System.out.println("template's datasourceclassname not be defined");
-                return;
+                throw new Exception("template's datasourceclassname not be defined");
             }
             Object dataSource;
             if (dataSources.containsKey(dataSourceName)) {
                 dataSource = dataSources.get(dataSourceName);
             } else {
-                try {
-                    DataSourceConfig dataSourceConfig = dataSourceConfigs.get(dataSourceName);
-                    String dataSourceClassName = dataSourceConfig.getDataSourceClassName();
-                    Class<?> aClass = Class.forName(dataSourceClassName);
-                    Class<?> type = (Class<?>) (((ParameterizedType) aClass.getGenericInterfaces()[0]).getActualTypeArguments()[0]);
+                DataSourceConfig dataSourceConfig = dataSourceConfigs.get(dataSourceName);
+                String dataSourceClassName = dataSourceConfig.getDataSourceClassName();
+                Class<?> aClass = Class.forName(dataSourceClassName);
+                Class<?> type = (Class<?>) (((ParameterizedType) aClass.getGenericInterfaces()[0]).getActualTypeArguments()[0]);
 
-                    IDataSource ds = (IDataSource) aClass.newInstance();
-                    dataSource = ds.loadDataSource(ConfigReader.getConfig(type, dataSourceConfig.getConfigPath()));
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                    return;
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    return;
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                    return;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return;
-                }
+                IDataSource ds = (IDataSource) aClass.newInstance();
+                dataSource = ds.loadDataSource(ConfigReader.getConfig(type, dataSourceConfig.getConfigPath()));
             }
 
             Configuration cfg = new Configuration(Configuration.VERSION_2_3_22);
-            try {
-                cfg.setDirectoryForTemplateLoading(new File("templates"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            cfg.setDirectoryForTemplateLoading(new File("templates"));
             cfg.setDefaultEncoding("UTF-8");
             cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 
             Template temp = null;
-            try {
-                temp = cfg.getTemplate(template.getTemplateFilename());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            temp = cfg.getTemplate(template.getTemplateFilename());
             FileWriter writer = null;
-            try {
-                writer = new FileWriter(new File(template.getOutputPath()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            writer = new FileWriter(new File(template.getOutputPath()));
 
-            try {
-                temp.process(dataSource, writer);
-            } catch (TemplateException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            temp.process(dataSource, writer);
         }
     }
 }
