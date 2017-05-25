@@ -1,6 +1,6 @@
-package org.bigmamonkey.dataSource;
+package org.bigmamonkey.modelBuilder;
 
-import org.bigmamonkey.core.IDataSource;
+import org.bigmamonkey.core.IModelBuilder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * Created by bigmamonkey on 5/22/17.
  */
-public class MySqlDataSource implements IDataSource<MySqlConfig> {
+public class MySqlModelBuilder implements IModelBuilder<MySqlConfig> {
 
-    public Object loadDataSource(MySqlConfig config) throws Exception {
+    public Object loadDataModel(MySqlConfig config) throws Exception {
 
         try {
             Class.forName(config.getDriverClassName());

@@ -4,7 +4,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
 import org.bigmamonkey.config.Config;
-import org.bigmamonkey.config.DataSourceConfig;
+import org.bigmamonkey.config.ModelBuilderConfig;
 import org.bigmamonkey.config.TemplateConfig;
 import org.bigmamonkey.util.ConfigReader;
 
@@ -20,8 +20,8 @@ import java.util.List;
 public class GeneratorManager {
 
     private String configPath;
-    private HashMap<String, Object> dataSources = new HashMap<String, Object>();
-    private HashMap<String, DataSourceConfig> dataSourceConfigs = new HashMap<String, DataSourceConfig>();
+    private HashMap<String, DataModel> dataModels = new HashMap<String, DataModel>();
+    private HashMap<String, ModelBuilderConfig> modelBuilderConfigs = new HashMap<String, ModelBuilderConfig>();
 
     public GeneratorManager(String configPath) {
         this.configPath = configPath;
@@ -31,32 +31,31 @@ public class GeneratorManager {
 
         Config config = ConfigReader.getConfig(Config.class, configPath);
 
-        for (DataSourceConfig dataSourceConfig : config.getDataSources()) {
-            dataSourceConfigs.put(dataSourceConfig.getName(), dataSourceConfig);
+        for (ModelBuilderConfig modelBuilderConfig : config.getModelBuilders()) {
+            modelBuilderConfigs.put(modelBuilderConfig.getName(), modelBuilderConfig);
         }
 
         List<TemplateConfig> templates = config.getTemplates();
         for (TemplateConfig template : templates) {
-            String dataSourceName = template.getDataSourceName();
-            if (!dataSourceConfigs.containsKey(dataSourceName)) {
+            String moderBuilderName = template.getModelBuilderName();
+            if (!modelBuilderConfigs.containsKey(moderBuilderName)) {
                 throw new Exception("template's datasourceclassname not be defined");
             }
 
             DataModel dataModel = new DataModel();
-            Object dataSource;
-            if (dataSources.containsKey(dataSourceName)) {
-                dataSource = dataSources.get(dataSourceName);
+            if (dataModels.containsKey(moderBuilderName)) {
+                dataModel = dataModels.get(moderBuilderName);
             } else {
-                DataSourceConfig dataSourceConfig = dataSourceConfigs.get(dataSourceName);
-                String dataSourceClassName = dataSourceConfig.getDataSourceClassName();
-                Class<?> aClass = Class.forName(dataSourceClassName);
-                Class<?> type = (Class<?>) (((ParameterizedType) aClass.getGenericInterfaces()[0]).getActualTypeArguments()[0]);
+                ModelBuilderConfig modelBuilderConfig = modelBuilderConfigs.get(moderBuilderName);
+                String modelBuilderClassName = modelBuilderConfig.getModelBuilderClassName();
+                Class<?> builderClass = Class.forName(modelBuilderClassName);
+                Class<?> type = (Class<?>) (((ParameterizedType) builderClass.getGenericInterfaces()[0]).getActualTypeArguments()[0]);
 
-                IDataSource ds = (IDataSource) aClass.newInstance();
-                dataSource = ds.loadDataSource(ConfigReader.getConfig(type, dataSourceConfig.getConfigPath()));
+                IModelBuilder ds = (IModelBuilder) builderClass.newInstance();
+                Object modelData = ds.loadDataModel(ConfigReader.getConfig(type, modelBuilderConfig.getConfigPath()));
+                dataModel.setModel(modelData);
+                dataModels.put(moderBuilderName, dataModel);
             }
-
-            dataModel.setData(dataSource);
 
             Configuration cfg = new Configuration(Configuration.VERSION_2_3_22);
             cfg.setDirectoryForTemplateLoading(new File("templates"));
@@ -68,6 +67,7 @@ public class GeneratorManager {
             FileWriter writer = null;
             writer = new FileWriter(new File(template.getOutputPath()));
             temp.process(dataModel, writer);
+            writer.close();
         }
     }
 }

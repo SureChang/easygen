@@ -1,6 +1,4 @@
-package org.bigmamonkey.dataSource;
-
-import java.sql.Types;
+package org.bigmamonkey.modelBuilder;
 
 /**
  * Created by bigmamonkey on 5/22/17.

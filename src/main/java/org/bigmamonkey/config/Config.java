@@ -1,8 +1,5 @@
 package org.bigmamonkey.config;
 
-import org.bigmamonkey.config.DataSourceConfig;
-import org.bigmamonkey.config.TemplateConfig;
-
 import java.util.List;
 
 /**
@@ -10,14 +7,14 @@ import java.util.List;
  */
 public class Config {
 
-    private List<DataSourceConfig> dataSources;
+    private List<ModelBuilderConfig> modelBuilders;
     private List<TemplateConfig> templates;
 
-    public List<DataSourceConfig> getDataSources() {
-        return dataSources;
+    public List<ModelBuilderConfig> getModelBuilders() {
+        return modelBuilders;
     }
 
-    public void setDataSources(List<DataSourceConfig> dataSources) { this.dataSources = dataSources; }
+    public void setModelBuilders(List<ModelBuilderConfig> modelBuilders) { this.modelBuilders = modelBuilders; }
 
     public List<TemplateConfig> getTemplates() {
         return templates;

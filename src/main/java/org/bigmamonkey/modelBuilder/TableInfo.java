@@ -1,4 +1,4 @@
-package org.bigmamonkey.dataSource;
+package org.bigmamonkey.modelBuilder;
 
 import java.util.ArrayList;
 import java.util.List;

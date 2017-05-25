@@ -1,10 +1,6 @@
 package org.bigmamonkey;
 
-import org.bigmamonkey.config.DataSourceConfig;
 import org.bigmamonkey.core.GeneratorManager;
-
-import java.sql.*;
-import java.util.List;
 
 /**
  * Hello world!

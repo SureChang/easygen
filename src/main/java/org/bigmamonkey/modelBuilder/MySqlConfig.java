@@ -1,4 +1,4 @@
-package org.bigmamonkey.dataSource;
+package org.bigmamonkey.modelBuilder;
 
 /**
  * Created by bigmamonkey on 5/22/17.

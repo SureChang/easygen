@@ -3,11 +3,11 @@ package org.bigmamonkey.config;
 /**
  * Created by bigmamonkey on 5/22/17.
  */
-public class DataSourceConfig {
+public class ModelBuilderConfig {
 
     private String name;
     private String configPath;
-    private String dataSourceClassName;
+    private String modelBuilderClassName;
 
     public String getName() {
         return name;
@@ -25,11 +25,11 @@ public class DataSourceConfig {
         this.configPath = configPath;
     }
 
-    public String getDataSourceClassName() {
-        return dataSourceClassName;
+    public String getModelBuilderClassName() {
+        return modelBuilderClassName;
     }
 
-    public void setDataSourceClassName(String dataSourceClassName) {
-        this.dataSourceClassName = dataSourceClassName;
+    public void setModelBuilderClassName(String modelBuilderClassName) {
+        this.modelBuilderClassName = modelBuilderClassName;
     }
 }

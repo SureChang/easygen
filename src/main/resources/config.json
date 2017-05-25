@@ -1,13 +1,13 @@
 {
-  "dataSources": [{
+  "modelBuilders": [{
     "name": "mysql",
-    "configPath": "/home/bigmamonkey/github/easygen/src/main/resources/dataSources/mysql.json",
-    "dataSourceClassName": "org.bigmamonkey.dataSource.MySqlDataSource"
+    "configPath": "/home/bigmamonkey/github/easygen/src/main/resources/modelBuilders/mysql.json",
+    "modelBuilderClassName": "org.bigmamonkey.modelBuilder.MySqlModelBuilder"
   }],
 
   "templates": [{
     "name": "",
-    "dataSourceName": "mysql",
+    "modelBuilderName": "mysql",
     "templateFilename": "",
     "outputPath": ""
   }]

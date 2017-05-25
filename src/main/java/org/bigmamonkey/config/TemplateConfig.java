@@ -6,7 +6,7 @@ package org.bigmamonkey.config;
 public class TemplateConfig {
 
     private String name;
-    private String dataSourceName;
+    private String modelBuilderName;
     private String templateFilename;
     private String outputPath;
 
@@ -34,11 +34,11 @@ public class TemplateConfig {
         this.outputPath = outputPath;
     }
 
-    public String getDataSourceName() {
-        return dataSourceName;
+    public String getModelBuilderName() {
+        return modelBuilderName;
     }
 
-    public void setDataSourceName(String dataSourceName) {
-        this.dataSourceName = dataSourceName;
+    public void setModelBuilderName(String modelBuilderName) {
+        this.modelBuilderName = modelBuilderName;
     }
 }
