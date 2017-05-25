@@ -9,6 +9,7 @@ public class MySqlConfig {
     private String driverClassName; //驱动类名称
     private String username;
     private String password;
+    private String tables;
 
     public String getDbUrl() {
         return dbUrl;
@@ -40,5 +41,13 @@ public class MySqlConfig {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTables() {
+        return tables;
+    }
+
+    public void setTables(String tables) {
+        this.tables = tables;
     }
 }

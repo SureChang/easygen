@@ -14,7 +14,13 @@ public class App
 {
     public static void main(String[] args )
     {
-        GeneratorManager generatorManager = new GeneratorManager("/home/bigmamonkey/github/easygen/src/main/resources/config.json");
+        if(args.length == 0){
+            System.out.println("the configPath argument missed..");
+            return;
+        }
+
+        String configPath = args[0];
+        GeneratorManager generatorManager = new GeneratorManager(configPath);
         try {
             generatorManager.Start();
         } catch (Exception e) {

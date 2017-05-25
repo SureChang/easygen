@@ -2,7 +2,6 @@ package org.bigmamonkey.core;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import org.bigmamonkey.config.Config;
 import org.bigmamonkey.config.DataSourceConfig;
@@ -11,7 +10,6 @@ import org.bigmamonkey.util.ConfigReader;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +41,8 @@ public class GeneratorManager {
             if (!dataSourceConfigs.containsKey(dataSourceName)) {
                 throw new Exception("template's datasourceclassname not be defined");
             }
+
+            DataModel dataModel = new DataModel();
             Object dataSource;
             if (dataSources.containsKey(dataSourceName)) {
                 dataSource = dataSources.get(dataSourceName);
@@ -56,6 +56,8 @@ public class GeneratorManager {
                 dataSource = ds.loadDataSource(ConfigReader.getConfig(type, dataSourceConfig.getConfigPath()));
             }
 
+            dataModel.setData(dataSource);
+
             Configuration cfg = new Configuration(Configuration.VERSION_2_3_22);
             cfg.setDirectoryForTemplateLoading(new File("templates"));
             cfg.setDefaultEncoding("UTF-8");
@@ -65,8 +67,7 @@ public class GeneratorManager {
             temp = cfg.getTemplate(template.getTemplateFilename());
             FileWriter writer = null;
             writer = new FileWriter(new File(template.getOutputPath()));
-
-            temp.process(dataSource, writer);
+            temp.process(dataModel, writer);
         }
     }
 }

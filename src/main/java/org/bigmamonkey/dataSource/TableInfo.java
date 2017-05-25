@@ -1,5 +1,6 @@
 package org.bigmamonkey.dataSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,5 +8,30 @@ import java.util.List;
  */
 public class TableInfo {
     private String name;
-    private List<TableField> fields;
+    private List<TableField> fields = new ArrayList<>();
+    private TableField primaryKey;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<TableField> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<TableField> fields) {
+        this.fields = fields;
+    }
+
+    public TableField getPrimaryKey() {
+        return primaryKey;
+    }
+
+    public void setPrimaryKey(TableField primaryKey) {
+        this.primaryKey = primaryKey;
+    }
 }
