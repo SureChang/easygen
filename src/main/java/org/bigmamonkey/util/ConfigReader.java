@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class ConfigReader {
 
-    public static <TConfig> TConfig getConfig(Class<TConfig> type, String path) throws Exception {
+    public static <TConfig> TConfig getConfigByFilePath(Class<TConfig> type, String path) throws Exception {
 
         File file = new File(path);
         if (!file.exists()) {
@@ -24,6 +24,19 @@ public class ConfigReader {
             return config;
         } catch (IOException e) {
             String errMsg = String.format("read config file {%s} exception..", path);
+            throw new Exception(errMsg, e);
+        }
+    }
+
+    public static <TConfig> TConfig getConfigByContent(String content, Class<TConfig> type) throws Exception {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        TConfig config;
+        try {
+            config = objectMapper.readValue(content, type);
+            return config;
+        } catch (IOException e) {
+            String errMsg = String.format("read template config file exception, content is %s..", content);
             throw new Exception(errMsg, e);
         }
     }

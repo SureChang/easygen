@@ -1,5 +1,7 @@
 package org.bigmamonkey.config;
 
+import java.util.HashMap;
+
 /**
  * Created by bigmamonkey on 5/22/17.
  */
@@ -9,6 +11,8 @@ public class TemplateConfig {
     private String modelBuilderName;
     private String templateFilename;
     private String outputPath;
+    private String outputFilenameRule;
+    private HashMap<String, String> options;
 
     public String getName() {
         return name;
@@ -40,5 +44,21 @@ public class TemplateConfig {
 
     public void setModelBuilderName(String modelBuilderName) {
         this.modelBuilderName = modelBuilderName;
+    }
+
+    public String getOutputFilenameRule() {
+        return outputFilenameRule;
+    }
+
+    public void setOutputFilenameRule(String outputFilenameRule) {
+        this.outputFilenameRule = outputFilenameRule;
+    }
+
+    public HashMap<String, String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(HashMap<String, String> options) {
+        this.options = options;
     }
 }

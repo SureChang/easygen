@@ -1,3 +1,3 @@
 # easygen
 
-an flexible code generate framework
+a flexible code generate framework
