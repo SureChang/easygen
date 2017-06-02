@@ -4,6 +4,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.bigmamonkey.config.Config;
 import org.bigmamonkey.config.ModelBuilderConfig;
@@ -23,12 +24,22 @@ import java.util.List;
 public class GeneratorManager {
 
     private String configPath;
+    private String templatePath;
     private HashMap<String, List<Object>> dataModels = new HashMap<>();
     private HashMap<String, ModelBuilderConfig> modelBuilderConfigs = new HashMap<>();
     private Configuration cfg;
 
+    public GeneratorManager() {
+        this("config.json", "templates");
+    }
+
     public GeneratorManager(String configPath) {
-        this.configPath = configPath;
+        this(configPath, "templates");
+    }
+
+    public GeneratorManager(String configPath, String templatePath) {
+        this.configPath = StringUtils.isEmpty(configPath) ? "config.json" : configPath;
+        this.templatePath = StringUtils.isEmpty(templatePath) ? "templates" : templatePath;
     }
 
     public void Start() throws Exception {
@@ -61,7 +72,7 @@ public class GeneratorManager {
                 dataModels.put(moderBuilderName, models);
             }
             cfg = new Configuration(Configuration.VERSION_2_3_22);
-            cfg.setDirectoryForTemplateLoading(new File("/home/bigmamonkey/github/easygen-mybatis/src/main/resources/templates"));
+            cfg.setDirectoryForTemplateLoading(new File(templatePath));
             cfg.setDefaultEncoding("UTF-8");
             cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 
@@ -91,6 +102,8 @@ public class GeneratorManager {
         String filename = outputFilenameRule.replace("{" + propName + "}", filenameValue);
         outputPath = outputPath.endsWith("/") ? outputPath : outputPath + "/";
         filename = outputPath + filename;
+
+        new File(outputPath).mkdirs();
 
         Template temp = cfg.getTemplate(tempFilename);
         FileWriter writer = null;
