@@ -16,4 +16,4 @@ a flexible code generate framework
 - 支持自定义输出路径
 - 支持模板自定义参数
 
-使用示例请参加项目：[easygen-mybatis](https://github.com/BigMaMonkey/easygen-mybatis)
+使用说明和示例请参加项目：[easygen-mybatis](https://github.com/BigMaMonkey/easygen-mybatis)
