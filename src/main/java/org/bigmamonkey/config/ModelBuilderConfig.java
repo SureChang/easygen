@@ -6,6 +6,7 @@ package org.bigmamonkey.config;
 public class ModelBuilderConfig {
 
     private String name;
+    private String type;
     private String configPath;
     private String modelBuilderClassName;
 
@@ -15,6 +16,14 @@ public class ModelBuilderConfig {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getConfigPath() {

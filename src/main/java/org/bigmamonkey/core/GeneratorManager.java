@@ -9,6 +9,9 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.bigmamonkey.config.Config;
 import org.bigmamonkey.config.ModelBuilderConfig;
 import org.bigmamonkey.config.TemplateConfig;
+import org.bigmamonkey.modelBuilder.JsonModelBuilder;
+import org.bigmamonkey.modelBuilder.MySqlConfig;
+import org.bigmamonkey.modelBuilder.MySqlModelBuilder;
 import org.bigmamonkey.util.ConfigReader;
 
 import java.io.File;
@@ -62,11 +65,28 @@ public class GeneratorManager {
                 models = dataModels.get(moderBuilderName);
             } else {
                 ModelBuilderConfig modelBuilderConfig = modelBuilderConfigs.get(moderBuilderName);
-                String modelBuilderClassName = modelBuilderConfig.getModelBuilderClassName();
-                Class<?> builderClass = Class.forName(modelBuilderClassName);
-                Class<?> type = (Class<?>) (((ParameterizedType) builderClass.getGenericInterfaces()[0]).getActualTypeArguments()[0]);
+                String builderType = modelBuilderConfig.getType();
+                IModelBuilder ds;
+                Class<?> type;
+                switch (builderType) {
+                    case "db:mysql":
+                        type = MySqlConfig.class;
+                        ds = new MySqlModelBuilder();
+                        break;
+                    case "json":
+                        type = HashMap.class;
+                        ds = new JsonModelBuilder();
+                        break;
+                    case "custom":
+                        String modelBuilderClassName = modelBuilderConfig.getModelBuilderClassName();
+                        Class<?> builderClass = Class.forName(modelBuilderClassName);
+                        type = (Class<?>) (((ParameterizedType) builderClass.getGenericInterfaces()[0]).getActualTypeArguments()[0]);
+                        ds = (IModelBuilder) builderClass.newInstance();
+                        break;
+                    default:
+                        throw new Exception("modelBuilderConfig miss type...");
+                }
 
-                IModelBuilder ds = (IModelBuilder) builderClass.newInstance();
                 models = ds.buildDataModels(ConfigReader.getConfigByFilePath(type, modelBuilderConfig.getConfigPath()));
 
                 dataModels.put(moderBuilderName, models);
@@ -98,7 +118,13 @@ public class GeneratorManager {
         }
 
         String propName = outputFilenameRule.substring(startIndex, endIndex);
-        String filenameValue = (String) FieldUtils.readDeclaredField(dataModel, propName, true);
+        String filenameValue;
+        if (dataModel instanceof HashMap) {
+            filenameValue = (String) ((HashMap) dataModel).get(propName);
+        } else {
+            filenameValue = (String) FieldUtils.readDeclaredField(dataModel, propName, true);
+        }
+
         String filename = outputFilenameRule.replace("{" + propName + "}", filenameValue);
         outputPath = outputPath.endsWith("/") ? outputPath : outputPath + "/";
         filename = outputPath + filename;

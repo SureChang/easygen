@@ -27,17 +27,4 @@ public class ConfigReader {
             throw new Exception(errMsg, e);
         }
     }
-
-    public static <TConfig> TConfig getConfigByContent(String content, Class<TConfig> type) throws Exception {
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        TConfig config;
-        try {
-            config = objectMapper.readValue(content, type);
-            return config;
-        } catch (IOException e) {
-            String errMsg = String.format("read template config file exception, content is %s..", content);
-            throw new Exception(errMsg, e);
-        }
-    }
 }
