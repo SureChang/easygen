@@ -10,6 +10,7 @@ a flexible code generate framework
 
 - 基于freemarker的模板语法
 - 内置mysql、json模型构建器，并支持自定义。（mysql数据源可指定生成表）
+  - 支持生成指定表
 - 支持同一模型对多模板（模型与模板的分离）
 - 支持List类型的模型，批量生成文件。
 - 支持自定义文件名生成规则
