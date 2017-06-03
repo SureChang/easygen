@@ -12,6 +12,7 @@ import java.util.List;
 public class TableInfo {
     private String name;
     private String upperCaseName;
+    private String simpleName;
     private List<TableField> fields = new ArrayList<>();
     private List<String> pkgs = new ArrayList<>();
     private TableField primaryKey;
@@ -24,6 +25,7 @@ public class TableInfo {
 
         this.name = name;
         this.upperCaseName = StringUtil.ToUpperName(name);
+        this.simpleName = StringUtil.ToSimpleName(this.upperCaseName);
     }
 
     public String getUpperCaseName() {
@@ -32,6 +34,14 @@ public class TableInfo {
 
     public void setUpperCaseName(String upperCaseName) {
         this.upperCaseName = upperCaseName;
+    }
+
+    public String getSimpleName() {
+        return simpleName;
+    }
+
+    public void setSimpleName(String simpleName) {
+        this.simpleName = simpleName;
     }
 
     public List<TableField> getFields() {

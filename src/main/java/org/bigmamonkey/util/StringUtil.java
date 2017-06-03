@@ -23,4 +23,9 @@ public class StringUtil {
 
         return stringBuilder.toString();
     }
+
+    public static String ToSimpleName(String str) {
+        String[] strs = str.split("_");
+        return strs[strs.length - 1];
+    }
 }
