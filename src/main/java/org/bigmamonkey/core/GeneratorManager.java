@@ -12,6 +12,7 @@ import org.bigmamonkey.config.TemplateConfig;
 import org.bigmamonkey.modelBuilder.JsonModelBuilder;
 import org.bigmamonkey.modelBuilder.MySqlConfig;
 import org.bigmamonkey.modelBuilder.MySqlModelBuilder;
+import org.bigmamonkey.util.ClassBuilder;
 import org.bigmamonkey.util.ConfigReader;
 
 import java.io.File;
@@ -79,9 +80,8 @@ public class GeneratorManager {
                         break;
                     case "custom":
                         String modelBuilderClassName = modelBuilderConfig.getModelBuilderClassName();
-                        Class<?> builderClass = Class.forName(modelBuilderClassName);
-                        type = (Class<?>) (((ParameterizedType) builderClass.getGenericInterfaces()[0]).getActualTypeArguments()[0]);
-                        ds = (IModelBuilder) builderClass.newInstance();
+                        ds = ClassBuilder.newInstance(modelBuilderClassName);
+                        type = ClassBuilder.getGenericTypeArgumengt(modelBuilderClassName);
                         break;
                     default:
                         throw new Exception("modelBuilderConfig miss type...");
@@ -95,7 +95,6 @@ public class GeneratorManager {
             cfg.setDirectoryForTemplateLoading(new File(templatePath));
             cfg.setDefaultEncoding("UTF-8");
             cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-
 
             for (Object eachModel : models) {
                 ProcessTemplate(eachModel, template);
@@ -127,13 +126,14 @@ public class GeneratorManager {
 
         String filename = outputFilenameRule.replace("{" + propName + "}", filenameValue);
         outputPath = outputPath.endsWith("/") ? outputPath : outputPath + "/";
+
         filename = outputPath + filename;
 
-        new File(outputPath).mkdirs();
+        File ditc = new File(outputPath);
+        ditc.mkdirs();
 
         Template temp = cfg.getTemplate(tempFilename);
-        FileWriter writer = null;
-        writer = new FileWriter(new File(filename));
+        FileWriter writer = new FileWriter(new File(filename));
         temp.process(modelHolder, writer);
         writer.close();
     }
