@@ -126,10 +126,8 @@ public class GeneratorManager {
 
         filename = outputPath + filename;
 
-        File ditc = new File(outputPath);
-        if (!ditc.mkdirs()) {
-            throw new Exception("make output dictionary error...");
-        }
+        File outPath = new File(outputPath);
+        outPath.mkdirs();
 
         Template temp = cfg.getTemplate(tempFilename);
         FileWriter writer = new FileWriter(new File(filename));
