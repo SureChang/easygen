@@ -2,7 +2,7 @@ package org.bigmamonkey.modelBuilder;
 
 import org.bigmamonkey.core.IModelBuilder;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -11,6 +11,6 @@ import java.util.List;
 public class JsonModelBuilder implements IModelBuilder<Object> {
     @Override
     public List<Object> buildDataModels(Object config) throws Exception {
-        return Arrays.asList(config);
+        return Collections.singletonList(config);
     }
 }

@@ -2,7 +2,6 @@ package org.bigmamonkey.core;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
@@ -17,8 +16,6 @@ import org.bigmamonkey.util.ConfigReader;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.List;
 
@@ -102,7 +99,7 @@ public class GeneratorManager {
         }
     }
 
-    private void ProcessTemplate(Object dataModel, TemplateConfig template) throws IOException, TemplateException, IllegalAccessException {
+    private void ProcessTemplate(Object dataModel, TemplateConfig template) throws Exception {
 
         ModelHolder modelHolder = new ModelHolder(dataModel, template.getOptions());
         String tempFilename = template.getTemplateFilename();
@@ -130,7 +127,9 @@ public class GeneratorManager {
         filename = outputPath + filename;
 
         File ditc = new File(outputPath);
-        ditc.mkdirs();
+        if (!ditc.mkdirs()) {
+            throw new Exception("make output dictionary error...");
+        }
 
         Template temp = cfg.getTemplate(tempFilename);
         FileWriter writer = new FileWriter(new File(filename));

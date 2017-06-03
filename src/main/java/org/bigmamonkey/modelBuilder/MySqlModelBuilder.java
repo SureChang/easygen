@@ -44,9 +44,7 @@ public class MySqlModelBuilder implements IModelBuilder<MySqlConfig> {
         }
 
         try {
-            if (connection != null) {
-                connection.close();
-            }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -81,12 +79,9 @@ public class MySqlModelBuilder implements IModelBuilder<MySqlConfig> {
      * 获得一个表的主键信息
      */
     public static String getAllPrimaryKeys(DatabaseMetaData dbMetaData, String tableName) throws SQLException {
-        String columnName = null;
+
         ResultSet rs = dbMetaData.getPrimaryKeys(null, null, tableName);
-        while (rs.next()) {
-            columnName = rs.getString("COLUMN_NAME");//列名
-            return columnName;
-        }
-        return columnName;
+        rs.next();
+        return rs.getString("COLUMN_NAME");//列名
     }
 }
