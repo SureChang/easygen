@@ -44,6 +44,14 @@ public class TableField {
                 columnType = DbColumnType.INTEGER;
                 typeName = "INTEGER";
                 break;
+            case Types.BIGINT:
+                columnType = DbColumnType.LONG;
+                typeName = "BIGINT";
+                break;
+            case Types.BIT:
+                columnType = DbColumnType.BOOLEAN;
+                typeName = "BIT";
+                break;
             case Types.VARCHAR:
                 columnType = DbColumnType.STRING;
                 typeName = "VARCHAR";
@@ -51,6 +59,14 @@ public class TableField {
             case Types.TIMESTAMP:
                 columnType = DbColumnType.DATE;
                 typeName = "TIMESTAMP";
+                break;
+            case Types.FLOAT:
+                columnType = DbColumnType.FLOAT;
+                typeName = "FLOAT";
+                break;
+            case Types.DOUBLE:
+                columnType = DbColumnType.DOUBLE;
+                typeName = "DOUBLE";
                 break;
             default:
                 columnType = DbColumnType.STRING;
