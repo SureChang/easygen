@@ -148,10 +148,10 @@
 3.1.首先是构建器配置
 ```json
 {
-      "name": "mysql", //构建器名称要唯一
-      "type": "db:mysql", //构建器类型目前只支持mysql和json两种
-      "configPath": "modelBuilders/mysql.json" //数据库配置和生成表指定
-    }
+  "name": "mysql", //构建器名称要唯一
+  "type": "db:mysql", //构建器类型目前只支持mysql和json两种
+  "configPath": "modelBuilders/mysql.json" //数据库配置和生成表指定
+}
 ```
 type中db:mysql指定使用内置的mysql构建器，configPath指定构建器的配置文件，配置如下：
 ```json
