@@ -12,17 +12,26 @@ package ${options.pons};
 import ${pkg};
 </#list>
 
+**
+* ${model.remarks}表
+*/
 public class ${model.upperCaseName} {
 
     <#list model.fields as field>
-    private ${field.columnType.javaType} ${field.name};
+    private ${field.columnType.javaType} ${field.name}; // ${field.remarks}
     </#list>
 
     <#list model.fields as field>
+    **
+    * 获取${field.remarks}字段
+    */
     public ${field.columnType.javaType} get${field.upperCaseName}() {
         return ${field.name};
     }
 
+    **
+    * 设置${field.remarks}字段
+    */
     public void set${field.upperCaseName}(${field.columnType.javaType} ${field.name}) {
         this.${field.name} = ${field.name}<#if field.columnType.javaType == "String"> == null ? null : ${field.name}.trim()</#if>;
     }

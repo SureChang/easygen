@@ -14,6 +14,7 @@ public class TableField {
     private DbColumnType columnType;
     private String typeName;
     private int columnSize;
+    private String remarks;
 
     public String getName() {
         return name;
@@ -97,5 +98,13 @@ public class TableField {
 
     public void setColumnType(DbColumnType columnType) {
         this.columnType = columnType;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

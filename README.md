@@ -23,6 +23,7 @@
 - 支持自定义文件名生成规则
 - 支持自定义输出路径
 - 支持模板自定义参数
+- 支持根据数据库remarks生成注释
 
 ###以下示例演示了应用于mybatis的代码生成使用。
 
@@ -43,30 +44,30 @@
 {
   "modelBuilders": [
     {
-      "name": "mysql", //构建器名称要唯一
-      "type": "db:mysql", //构建器类型目前只支持mysql和json两种
-      "configPath": "modelBuilders/mysql.json" //数据库配置和生成表指定
+      "name": "mysql", // 构建器名称要唯一
+      "type": "db:mysql", // 构建器类型目前只支持mysql和json两种
+      "configPath": "modelBuilders/mysql.json" // 数据库配置和生成表指定
     },
     {
       "name": "json",
       "type": "json",
-      "configPath": "modelBuilders/data.json" //与mysql构建器不同的是，这里直接是模型数据。
+      "configPath": "modelBuilders/data.json" // 与mysql构建器不同的是，这里直接是模型数据。
     },
     {
       "name": "http",
-      "type": "custom", //自定义的构建器
-      "configPath": "modelBuilders/xxx.json", //这个json反序列化类型需要在IModelBuilder的泛型参数中指出。
-      "modelBuilderClassName": "org.BigMaMonkey.XXX.XXX" //自定义的构建器需要实现类，实现IModelBuilder借口
+      "type": "custom", // 自定义的构建器
+      "configPath": "modelBuilders/xxx.json", // 这个json反序列化类型需要在IModelBuilder的泛型参数中指出。
+      "modelBuilderClassName": "org.BigMaMonkey.XXX.XXX" // 自定义的构建器需要实现类，实现org.bigmamonkey.core.IModelBuilder接口
     }
   ],
   "templates": [
     {
       "name": "mapperXml",
-      "modelBuilderName": "json", //关联的构建器名称，不是类型
-      "templateFilename": "data.ftl", //ftl模板文件
-      "outputPath": "output/data", //输出目录，会自动递归创建目录。
-      "outputFilenameRule": "data_{name}.xml", //输出文件名规则，{}内变量为模型的字段field
-      "options": {} //自定义模板参数，可以在模板中使用，请自由发挥。
+      "modelBuilderName": "json", // 关联的构建器名称，不是类型
+      "templateFilename": "data.ftl", // ftl模板文件
+      "outputPath": "output/data", // 输出目录，会自动递归创建目录。
+      "outputFilenameRule": "data_{name}.xml", // 输出文件名规则，{}内变量为模型的字段field
+      "options": {} // 自定义模板参数，可以在模板中使用，请自由发挥。
     },
     {
       "name": "mapperXml",
@@ -148,9 +149,9 @@
 3.1.首先是构建器配置
 ```json
 {
-  "name": "mysql", //构建器名称要唯一
-  "type": "db:mysql", //构建器类型目前只支持mysql和json两种
-  "configPath": "modelBuilders/mysql.json" //数据库配置和生成表指定
+  "name": "mysql", // 构建器名称要唯一
+  "type": "db:mysql", // 构建器类型目前只支持mysql和json两种
+  "configPath": "modelBuilders/mysql.json" // 数据库配置和生成表指定
 }
 ```
 type中db:mysql指定使用内置的mysql构建器，configPath指定构建器的配置文件，配置如下：
@@ -160,33 +161,35 @@ type中db:mysql指定使用内置的mysql构建器，configPath指定构建器�
   "driverClassName": "com.mysql.jdbc.Driver",
   "username": "root",
   "password": "root",
-  "tables": "sys_user,pub_dict" //用,分割指定生成的表名，也可以留空表示生成所有表
+  "tables": "sys_user,pub_dict" // 用,分割指定生成的表名，也可以留空表示生成所有表
 }
 ```
 3.2.需要给出的是内置mysql构建器的模型结构，你才能在ftl中使用
 ```json
 {
-  "name": "sys_user", //原始表名
-  "upperCaseName": "SYS_User", //前缀大写+首字符大写表名，用于创建PO、Mapper等
+  "name": "sys_user", // 原始表名
+  "upperCaseName": "SYS_User", // 前缀大写+首字符大写表名，用于创建PO、Mapper等
   "simpleName": "User", // 去掉前缀的表名，目前只支持_分割的表名，如sys_user
+  "remarks": "系统用户", // 表注释
   "pkgs": [
     "java.util.Date" // 字段类型对应的Java包，import到java文件
   ],
   "fields": [
     {
-      "name": "name", //原始字段名
-      "upperCaseName": "Name", //首字母大写字段名
+      "name": "name", // 原始字段名
+      "upperCaseName": "Name", // 首字母大写字段名
       "dataType": "12", // 字段类型值，对应 java.sql.Types中的枚举值
-      "typeName": "VARCHAR", //字段数据库类型，其他类型参见源码：TableField.java
-      "columnSize": "32", //字段大小
+      "typeName": "VARCHAR", // 字段数据库类型，其他类型参见源码：TableField.java
+      "columnSize": "32", // 字段大小
+      "remarks": "名称", // 字段名称
       "columnType": {
-        "javaType": "String", //对应的java类型
-        "pkg": null  //基础类型为null，不需要import
+        "javaType": "String", // 对应的java类型
+        "pkg": null  // 基础类型为null，不需要import
       }
     }
   ],
   "primaryKey": {
-    //同field中的元素属性
+    // 同field中的元素属性
   }
 }
 ```

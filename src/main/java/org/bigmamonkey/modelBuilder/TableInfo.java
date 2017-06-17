@@ -16,6 +16,7 @@ public class TableInfo {
     private List<TableField> fields = new ArrayList<>();
     private List<String> pkgs = new ArrayList<>();
     private TableField primaryKey;
+    private String remarks;
 
     public String getName() {
         return name;
@@ -74,5 +75,13 @@ public class TableInfo {
 
     public void setPrimaryKey(TableField primaryKey) {
         this.primaryKey = primaryKey;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }
