@@ -67,7 +67,7 @@
       "name": "serviceImpl",
       "modelBuilderName": "mysql",
       "templateFilename": "serviceImpl.ftl",
-      "outputPath": "output/service",
+      "outputPath": "output/serviceImpl",
       "outputFilenameRule": "{simpleName}ServiceImpl.java",
       "options": {
         "pons": "org.bigmonkey.robot.entity.po",
