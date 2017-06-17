@@ -145,7 +145,7 @@
 其实模板的编写很简单，你只需要掌握freemarker的ftl语法，以及基本的json知识就可以了。
 这里只讲解mybatis内置构建器的使用
 
-1.首先是构建器配置
+3.1.首先是构建器配置
 ```json
 {
       "name": "mysql", //构建器名称要唯一
@@ -163,7 +163,7 @@ type中db:mysql指定使用内置的mysql构建器，configPath指定构建器�
   "tables": "sys_user,pub_dict" //用,分割指定生成的表名，也可以留空表示生成所有表
 }
 ```
-2.需要给出的是内置mysql构建器的模型结构，你才能在ftl中使用
+3.2.需要给出的是内置mysql构建器的模型结构，你才能在ftl中使用
 ```json
 {
   "name": "sys_user", //原始表名
@@ -196,7 +196,7 @@ type中db:mysql指定使用内置的mysql构建器，configPath指定构建器�
 
 通过在outputFilenameRule中使用{XXX}可以引用model中根属性，来自定义输出文件名，如{upperCaseName}Mapper.java
 
-最后使用方式相当简单：
+4.最后使用方式相当简单：
 
 ```cmd
 java -jar easygen-1.0-SNAPSHOT.jar 
