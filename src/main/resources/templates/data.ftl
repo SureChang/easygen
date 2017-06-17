@@ -1,0 +1,1 @@
+this is data from json file: ${model.org.name}

@@ -1,0 +1,80 @@
+{
+  "modelBuilders": [
+    {
+      "name": "mysql",
+      "type": "db:mysql",
+      "configPath": "modelBuilders/mysql.json"
+    },
+    {
+      "name": "json",
+      "type": "json",
+      "configPath": "modelBuilders/data.json"
+    }
+  ],
+  "templates": [
+    {
+      "name": "mapperXml",
+      "modelBuilderName": "json",
+      "templateFilename": "data.ftl",
+      "outputPath": "output/data",
+      "outputFilenameRule": "data_{name}.xml",
+      "options": {}
+    },
+    {
+      "name": "mapperXml",
+      "modelBuilderName": "mysql",
+      "templateFilename": "mapperXml.ftl",
+      "outputPath": "output/mapperXml",
+      "outputFilenameRule": "{upperCaseName}Mapper.xml",
+      "options": {
+        "mapperns": "org.bigmonkey.robot.mapper",
+        "pons": "org.bigmonkey.robot.entity.po"
+      }
+    },
+    {
+      "name": "beanClass",
+      "modelBuilderName": "mysql",
+      "templateFilename": "beanClass.ftl",
+      "outputPath": "output/bean",
+      "outputFilenameRule": "{upperCaseName}.java",
+      "options": {
+        "pons": "org.bigmonkey.robot.entity.po"
+      }
+    },
+    {
+      "name": "mapperClass",
+      "modelBuilderName": "mysql",
+      "templateFilename": "mapperClass.ftl",
+      "outputPath": "output/mapper",
+      "outputFilenameRule": "{upperCaseName}Mapper.java",
+      "options": {
+        "pons": "org.bigmonkey.robot.entity.po",
+        "mpns": "org.bigmonkey.robot.mapper"
+      }
+    },
+    {
+      "name": "serviceInterface",
+      "modelBuilderName": "mysql",
+      "templateFilename": "serviceInterface.ftl",
+      "outputPath": "output/service",
+      "outputFilenameRule": "I{simpleName}Service.java",
+      "options": {
+        "pons": "org.bigmonkey.robot.entity.po",
+        "itns": "org.bigmonkey.robot.service"
+      }
+    },
+    {
+      "name": "serviceImpl",
+      "modelBuilderName": "mysql",
+      "templateFilename": "serviceImpl.ftl",
+      "outputPath": "output/service",
+      "outputFilenameRule": "{simpleName}ServiceImpl.java",
+      "options": {
+        "pons": "org.bigmonkey.robot.entity.po",
+        "itns": "org.bigmonkey.robot.service",
+        "mpns": "org.bigmonkey.robot.mapper",
+        "imns": "org.bigmonkey.robot.service.impl"
+      }
+    }
+  ]
+}
