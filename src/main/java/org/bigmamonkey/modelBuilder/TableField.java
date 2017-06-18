@@ -8,13 +8,13 @@ import java.sql.Types;
  * Created by bigmamonkey on 5/22/17.
  */
 public class TableField {
-    private String name;
-    private String upperCaseName;
-    private int dataType;
+    private String name; // 原始字段名
+    private String upperCaseName; // 首字母大写字段名
+    private int dataType; // 字段类型值，对应 java.sql.Types中的枚举值
     private DbColumnType columnType;
-    private String typeName;
-    private int columnSize;
-    private String remarks;
+    private String typeName; // 字段数据库类型，其他类型参见源码：TableField.java
+    private int columnSize; // 字段大小
+    private String remarks; // 字段注释
 
     public String getName() {
         return name;

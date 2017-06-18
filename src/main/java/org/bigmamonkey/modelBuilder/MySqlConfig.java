@@ -9,7 +9,7 @@ public class MySqlConfig {
     private String driverClassName; //驱动类名称
     private String username;
     private String password;
-    private String tables;
+    private String tables; // 可指定要生成的表名，用,分割
 
     public String getDbUrl() {
         return dbUrl;

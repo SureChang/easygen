@@ -10,13 +10,13 @@ import java.util.List;
  * Created by bigmamonkey on 5/22/17.
  */
 public class TableInfo {
-    private String name;
-    private String upperCaseName;
-    private String simpleName;
+    private String name; // 原始表名
+    private String upperCaseName; //前缀大写+首字符大写表名，用于创建PO、Mapper等
+    private String simpleName;// 去掉前缀的表名，目前只支持_分割的表名，如sys_user
     private List<TableField> fields = new ArrayList<>();
-    private List<String> pkgs = new ArrayList<>();
-    private TableField primaryKey;
-    private String remarks;
+    private List<String> pkgs = new ArrayList<>(); // 所有字段类型对应的Java包，import到java文件
+    private TableField primaryKey; // 主键字段
+    private String remarks; // 表注释
 
     public String getName() {
         return name;

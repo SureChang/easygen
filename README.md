@@ -181,7 +181,7 @@ type中db:mysql指定使用内置的mysql构建器，configPath指定构建器�
       "dataType": "12", // 字段类型值，对应 java.sql.Types中的枚举值
       "typeName": "VARCHAR", // 字段数据库类型，其他类型参见源码：TableField.java
       "columnSize": "32", // 字段大小
-      "remarks": "名称", // 字段名称
+      "remarks": "名称", // 字段注释
       "columnType": {
         "javaType": "String", // 对应的java类型
         "pkg": null  // 基础类型为null，不需要import
