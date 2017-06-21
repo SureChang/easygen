@@ -118,7 +118,7 @@ public class GeneratorManager {
         if (dataModel instanceof HashMap) {
             filenameValue = (String) ((HashMap) dataModel).get(propName);
         } else {
-            filenameValue = (String) FieldUtils.readDeclaredField(dataModel, propName, true);
+            filenameValue = (String) FieldUtils.readField(dataModel, propName, true);
         }
 
         String filename = outputFilenameRule.replace("{" + propName + "}", filenameValue);
