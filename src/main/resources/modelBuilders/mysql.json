@@ -1,5 +1,5 @@
 {
-  "dbUrl": "jdbc:mysql://localhost:3306/device_manage",
+  "dbUrl": "jdbc:mysql://localhost:3306/device_manage?useSSL=false",
   "driverClassName": "com.mysql.jdbc.Driver",
   "username": "root",
   "password": "root",
