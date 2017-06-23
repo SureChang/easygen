@@ -65,6 +65,10 @@ public class TableField {
                 columnType = DbColumnType.FLOAT;
                 typeName = "FLOAT";
                 break;
+            case Types.REAL:
+                columnType = DbColumnType.FLOAT;
+                typeName = "FLOAT";
+                break;
             case Types.DOUBLE:
                 columnType = DbColumnType.DOUBLE;
                 typeName = "DOUBLE";
