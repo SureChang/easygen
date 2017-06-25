@@ -13,6 +13,7 @@ public class TableInfo {
     private String name; // 原始表名
     private String upperCaseName; //前缀大写+首字符大写表名，用于创建PO、Mapper等
     private String simpleName;// 去掉前缀的表名，目前只支持_分割的表名，如sys_user
+    private String upperCaseSimpleName; //simpleName的首字母大写形式
     private List<TableField> fields = new ArrayList<>();
     private List<String> pkgs = new ArrayList<>(); // 所有字段类型对应的Java包，import到java文件
     private TableField primaryKey; // 主键字段
@@ -26,7 +27,8 @@ public class TableInfo {
 
         this.name = name;
         this.upperCaseName = StringUtil.ToUpperName(name);
-        this.simpleName = StringUtil.ToSimpleName(this.upperCaseName);
+        this.simpleName = StringUtil.ToSimpleName(name);
+        this.upperCaseSimpleName = StringUtil.ToSimpleName(this.upperCaseName);
     }
 
     public String getUpperCaseName() {
@@ -43,6 +45,14 @@ public class TableInfo {
 
     public void setSimpleName(String simpleName) {
         this.simpleName = simpleName;
+    }
+
+    public String getUpperCaseSimpleName() {
+        return upperCaseSimpleName;
+    }
+
+    public void setUpperCaseSimpleName(String upperCaseSimpleName) {
+        this.upperCaseSimpleName = upperCaseSimpleName;
     }
 
     public List<TableField> getFields() {

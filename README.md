@@ -106,7 +106,7 @@
       "modelBuilderName": "mysql",
       "templateFilename": "serviceInterface.ftl",
       "outputPath": "output/service",
-      "outputFilenameRule": "I{simpleName}Service.java",
+      "outputFilenameRule": "I{upperCaseSimpleName}Service.java",
       "options": {
         "pons": "org.bigmonkey.robot.entity.po",
         "itns": "org.bigmonkey.robot.service"
@@ -117,7 +117,7 @@
       "modelBuilderName": "mysql",
       "templateFilename": "serviceImpl.ftl",
       "outputPath": "output/service",
-      "outputFilenameRule": "{simpleName}ServiceImpl.java",
+      "outputFilenameRule": "{upperCaseSimpleName}ServiceImpl.java",
       "options": {
         "pons": "org.bigmonkey.robot.entity.po",
         "imns": "org.bigmonkey.robot.service.impl"
@@ -169,7 +169,8 @@ type中db:mysql指定使用内置的mysql构建器，configPath指定构建器�
 {
   "name": "sys_user", // 原始表名
   "upperCaseName": "SYS_User", // 前缀大写+首字符大写表名，用于创建PO、Mapper等
-  "simpleName": "User", // 去掉前缀的表名，目前只支持_分割的表名，如sys_user
+  "simpleName": "user", // 去掉前缀的表名，目前只支持_分割的表名，如sys_user
+  "upperCaseSimpleName": "User", // simpleName的首字母大写形式
   "remarks": "系统用户", // 表注释
   "pkgs": [
     "java.util.Date" // 字段类型对应的Java包，import到java文件

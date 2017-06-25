@@ -10,13 +10,13 @@ package ${options.imns};
 
 import ${options.pons}.${model.upperCaseName};
 import ${options.mpns}.${model.upperCaseName}Mapper;
-import ${options.itns}.I${model.simpleName}Service;
+import ${options.itns}.I${model.upperCaseSimpleName}Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ${model.simpleName}ServiceImpl implements I${model.simpleName}Service {
+public class ${model.upperCaseSimpleName}ServiceImpl implements I${model.upperCaseSimpleName}Service {
 
     @Autowired
     ${model.upperCaseName}Mapper ${model.name}Mapper;

@@ -11,7 +11,7 @@ package ${options.itns};
 import ${options.pons}.${model.upperCaseName};
 import java.util.List;
 
-public interface I${model.simpleName}Service {
+public interface I${model.upperCaseSimpleName}Service {
 
     int deleteByPrimaryKey(${model.primaryKey.columnType.javaType} ${model.primaryKey.name});
 

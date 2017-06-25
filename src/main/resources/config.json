@@ -57,7 +57,7 @@
       "modelBuilderName": "mysql",
       "templateFilename": "serviceInterface.ftl",
       "outputPath": "output/service",
-      "outputFilenameRule": "I{simpleName}Service.java",
+      "outputFilenameRule": "I{upperCaseSimpleName}Service.java",
       "options": {
         "pons": "org.bigmonkey.robot.entity.po",
         "itns": "org.bigmonkey.robot.service"
@@ -68,7 +68,7 @@
       "modelBuilderName": "mysql",
       "templateFilename": "serviceImpl.ftl",
       "outputPath": "output/serviceImpl",
-      "outputFilenameRule": "{simpleName}ServiceImpl.java",
+      "outputFilenameRule": "{upperCaseSimpleName}ServiceImpl.java",
       "options": {
         "pons": "org.bigmonkey.robot.entity.po",
         "itns": "org.bigmonkey.robot.service",
