@@ -75,6 +75,14 @@
         "mpns": "org.bigmonkey.robot.mapper",
         "imns": "org.bigmonkey.robot.service.impl"
       }
+    },
+    {
+      "name": "deviceController",
+      "modelBuilderName": "mysql",
+      "templateFilename": "deviceController.ftl",
+      "outputPath": "output/devCtrl",
+      "outputFilenameRule": "{upperCaseSimpleName}Controller.java",
+      "options": {}
     }
   ]
 }
