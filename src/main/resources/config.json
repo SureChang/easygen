@@ -8,16 +8,25 @@
     {
       "name": "json",
       "type": "json",
-      "configPath": "modelBuilders/data.json"
+      "configPath": "modelBuilders/jsonModel.json"
     }
   ],
   "templates": [
     {
-      "name": "mapperXml",
+      "name": "jsonModel",
       "modelBuilderName": "json",
-      "templateFilename": "data.ftl",
-      "outputPath": "output/data",
+      "templateFilename": "jsonModel.ftl",
+      "outputPath": "output/jsonModel",
       "outputFilenameRule": "data_{name}.xml",
+      "options": {}
+    },
+    {
+      "name": "dbToJson",
+      "modelBuilderName": "mysql",
+      "templateFilename": "dbToJson.ftl",
+      "outputPath": "output/dbToJson",
+      "outputFilenameRule": "dbToJson.json",
+      "oneFile": true,
       "options": {}
     },
     {

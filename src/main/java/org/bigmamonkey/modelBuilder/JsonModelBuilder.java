@@ -11,6 +11,6 @@ import java.util.List;
 public class JsonModelBuilder implements IModelBuilder<Object> {
     @Override
     public List<Object> buildDataModels(Object config) throws Exception {
-        return Collections.singletonList(config);
+        return (List) config;
     }
 }

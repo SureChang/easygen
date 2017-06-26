@@ -16,6 +16,7 @@ import org.bigmamonkey.util.ConfigReader;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -72,7 +73,7 @@ public class GeneratorManager {
                         ds = new MySqlModelBuilder();
                         break;
                     case "json":
-                        type = HashMap.class;
+                        type = ArrayList.class;
                         ds = new JsonModelBuilder();
                         break;
                     case "custom":
@@ -93,8 +94,12 @@ public class GeneratorManager {
             cfg.setDefaultEncoding("UTF-8");
             cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 
-            for (Object eachModel : models) {
-                ProcessTemplate(eachModel, template);
+            if (template.isOneFile()) {
+                ProcessTemplate(models, template);
+            } else {
+                for (Object eachModel : models) {
+                    ProcessTemplate(eachModel, template);
+                }
             }
         }
     }
@@ -106,22 +111,30 @@ public class GeneratorManager {
         String outputPath = template.getOutputPath();
         String outputFilenameRule = template.getOutputFilenameRule();
 
-        int startIndex = outputFilenameRule.indexOf("{") + 1;
-        int endIndex = outputFilenameRule.indexOf("}");
+        String filename;
 
-        if (startIndex >= endIndex) {
-            throw new StringIndexOutOfBoundsException(endIndex - startIndex);
+        if (template.isOneFile()) {
+            filename = outputFilenameRule;
+        }
+        else {
+            int startIndex = outputFilenameRule.indexOf("{") + 1;
+            int endIndex = outputFilenameRule.indexOf("}");
+
+            if (startIndex >= endIndex) {
+                throw new StringIndexOutOfBoundsException(endIndex - startIndex);
+            }
+
+            String propName = outputFilenameRule.substring(startIndex, endIndex);
+            String filenameValue;
+            if (dataModel instanceof HashMap) {
+                filenameValue = (String) ((HashMap) dataModel).get(propName);
+            } else {
+                filenameValue = (String) FieldUtils.readField(dataModel, propName, true);
+            }
+
+            filename = outputFilenameRule.replace("{" + propName + "}", filenameValue);
         }
 
-        String propName = outputFilenameRule.substring(startIndex, endIndex);
-        String filenameValue;
-        if (dataModel instanceof HashMap) {
-            filenameValue = (String) ((HashMap) dataModel).get(propName);
-        } else {
-            filenameValue = (String) FieldUtils.readField(dataModel, propName, true);
-        }
-
-        String filename = outputFilenameRule.replace("{" + propName + "}", filenameValue);
         outputPath = outputPath.endsWith("/") ? outputPath : outputPath + "/";
 
         filename = outputPath + filename;

@@ -12,6 +12,7 @@ public class TemplateConfig {
     private String templateFilename;
     private String outputPath;
     private String outputFilenameRule;
+    private boolean oneFile = false;
     private HashMap<String, String> options;
 
     public String getName() {
@@ -60,5 +61,13 @@ public class TemplateConfig {
 
     public void setOptions(HashMap<String, String> options) {
         this.options = options;
+    }
+
+    public boolean isOneFile() {
+        return oneFile;
+    }
+
+    public void setOneFile(boolean oneFile) {
+        this.oneFile = oneFile;
     }
 }

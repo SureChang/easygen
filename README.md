@@ -19,7 +19,7 @@
 - 内置mysql、json模型构建器，并支持自定义
   - 支持生成指定表、去掉表前缀、转换大小写等
 - 支持模型与模板的一对多关系（模型与模板的分离）
-- 支持List类型的模型，批量生成。
+- 支持List类型的模型，支持批量生成，也支持List生成单个文件。
 - 支持自定义文件名生成规则
 - 支持自定义输出路径
 - 支持模板自定义参数
@@ -51,7 +51,7 @@
     {
       "name": "json",
       "type": "json",
-      "configPath": "modelBuilders/data.json" // 与mysql构建器不同的是，这里直接是模型数据。
+      "configPath": "modelBuilders/jsonModel.json" // 与mysql构建器不同的是，这里直接是模型数据，注意Json模型必须是数组,参考data.json
     },
     {
       "name": "http",
@@ -62,12 +62,21 @@
   ],
   "templates": [
     {
-      "name": "mapperXml",
+      "name": "jsonModel",
       "modelBuilderName": "json", // 关联的构建器名称，不是类型
-      "templateFilename": "data.ftl", // ftl模板文件
-      "outputPath": "output/data", // 输出目录，会自动递归创建目录。
-      "outputFilenameRule": "data_{name}.xml", // 输出文件名规则，{}内变量为模型的字段field
+      "templateFilename": "jsonModel.ftl", // ftl模板文件
+      "outputPath": "output/jsonModel", // 输出目录，会自动递归创建目录。
+      "outputFilenameRule": "jsonModel_{name}.xml", // 输出文件名规则，{}内变量为模型的字段field
       "options": {} // 自定义模板参数，可以在模板中使用，请自由发挥。
+    },
+    {
+      "name": "dbToJson", //输出数据库元数据到Json
+      "modelBuilderName": "mysql",
+      "templateFilename": "dbToJson.ftl",
+      "outputPath": "output/dbToJson",
+      "outputFilenameRule": "dbToJson.json",
+      "oneFile": true, //通过设置这个属性，可以将所有表的元数据输出到一个Template
+      "options": {}
     },
     {
       "name": "mapperXml",
@@ -134,7 +143,7 @@
     {
       "name": "db-to-json",
       "modelBuilderName": "mysql",
-      "templateFilename": "dbtojson.ftl",
+      "templateFilename": dbToJson.ftl,
       "outputPath": "output/json",
       "outputFilenameRule": "{name}.json",
       "options": {}
