@@ -9,37 +9,14 @@
       "name": "json",
       "type": "json",
       "configPath": "modelBuilders/jsonModel.json"
+    },
+    {
+      "name": "viewJson",
+      "type": "json",
+      "configPath": "modelBuilders/dbtojson.json"
     }
   ],
   "templates": [
-    {
-      "name": "jsonModel",
-      "modelBuilderName": "json",
-      "templateFilename": "jsonModel.ftl",
-      "outputPath": "output/jsonModel",
-      "outputFilenameRule": "data_{name}.xml",
-      "options": {}
-    },
-    {
-      "name": "dbToJson",
-      "modelBuilderName": "mysql",
-      "templateFilename": "dbToJson.ftl",
-      "outputPath": "output/dbToJson",
-      "outputFilenameRule": "dbToJson.json",
-      "oneFile": true,
-      "options": {}
-    },
-    {
-      "name": "mapperXml",
-      "modelBuilderName": "mysql",
-      "templateFilename": "mapperXml.ftl",
-      "outputPath": "output/mapperXml",
-      "outputFilenameRule": "{upperCaseName}Mapper.xml",
-      "options": {
-        "mapperns": "org.bigmonkey.robot.mapper",
-        "pons": "org.bigmonkey.robot.entity.po"
-      }
-    },
     {
       "name": "beanClass",
       "modelBuilderName": "mysql",
@@ -59,6 +36,17 @@
       "options": {
         "pons": "org.bigmonkey.robot.entity.po",
         "mpns": "org.bigmonkey.robot.mapper"
+      }
+    },
+    {
+      "name": "mapperXml",
+      "modelBuilderName": "mysql",
+      "templateFilename": "mapperXml.ftl",
+      "outputPath": "output/mapperXml",
+      "outputFilenameRule": "{upperCaseName}Mapper.xml",
+      "options": {
+        "mapperns": "org.bigmonkey.robot.mapper",
+        "pons": "org.bigmonkey.robot.entity.po"
       }
     },
     {
@@ -91,6 +79,31 @@
       "templateFilename": "deviceController.ftl",
       "outputPath": "output/devCtrl",
       "outputFilenameRule": "{upperCaseSimpleName}Controller.java",
+      "options": {}
+    },
+    {
+      "name": "jsonToView",
+      "modelBuilderName": "viewJson",
+      "templateFilename": "view.ftl",
+      "outputPath": "output/view",
+      "outputFilenameRule": "{upperCaseSimpleName}.vue",
+      "options": {}
+    },
+    {
+      "name": "jsonModel",
+      "modelBuilderName": "json",
+      "templateFilename": "jsonModel.ftl",
+      "outputPath": "output/jsonModel",
+      "outputFilenameRule": "data_{name}.xml",
+      "options": {}
+    },
+    {
+      "name": "dbToJson",
+      "modelBuilderName": "mysql",
+      "templateFilename": "dbToJson.ftl",
+      "outputPath": "output/dbToJson",
+      "outputFilenameRule": "dbToJson.json",
+      "oneFile": true,
       "options": {}
     }
   ]

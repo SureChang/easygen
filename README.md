@@ -143,7 +143,7 @@
     {
       "name": "db-to-json",
       "modelBuilderName": "mysql",
-      "templateFilename": dbToJson.ftl,
+      "templateFilename": "dbToJson.ftl",
       "outputPath": "output/json",
       "outputFilenameRule": "{name}.json",
       "options": {}

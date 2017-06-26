@@ -1,0 +1,1132 @@
+[{
+  "name": "dev_baseInfo",
+  "upperCaseName": "DEV_BaseInfo",
+  "simpleName": "baseInfo",
+  "upperCaseSimpleName": "BaseInfo",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "code",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "设备编码"
+    },
+    {
+      "name": "orgId",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "projectId",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "roadId",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "posNo",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "桩号"
+    },
+    {
+      "name": "installPos",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "安装位置"
+    },
+    {
+      "name": "deviceType",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "设备类型"
+    },
+    {
+      "name": "productId",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "产品Id"
+    },
+    {
+      "name": "productDate",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": "生产日期"
+    },
+    {
+      "name": "installDate",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": "安装日期"
+    },
+    {
+      "name": "acceptDate",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": "验收日期"
+    },
+    {
+      "name": "serviceDate",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": "质保日期"
+    },
+    {
+      "name": "providerId",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "供应商Id"
+    },
+    {
+      "name": "builderId",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "承建商Id"
+    },
+    {
+      "name": "image",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "status",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "faultInfo",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "故障信息"
+    },
+    {
+      "name": "preDevice",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "前置设备"
+    },
+    {
+      "name": "nextDevice",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "后置设备"
+    },
+    {
+      "name": "lanType",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "通讯方式"
+    },
+    {
+      "name": "commAddress",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "通讯地址"
+    },
+    {
+      "name": "lanProvider",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "通讯供应商"
+    },
+    {
+      "name": "lanPhoneNo",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "通讯号码"
+    },
+    {
+      "name": "longitude",
+      "type": "DOUBLE",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "latitude",
+      "type": "DOUBLE",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "createTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "creator",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifyTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifier",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "dev_camera",
+  "upperCaseName": "DEV_Camera",
+  "simpleName": "camera",
+  "upperCaseSimpleName": "Camera",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "sensorType",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "传感器类型"
+    },
+    {
+      "name": "sensorSize",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "传感器大小"
+    },
+    {
+      "name": "zoom",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "变焦倍数"
+    },
+    {
+      "name": "encodeType",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "编码类型"
+    },
+    {
+      "name": "colorIllumination",
+      "type": "FLOAT",
+      "dictType": 0,
+      "remarks": "彩色最小照度"
+    },
+    {
+      "name": "blackIllumination",
+      "type": "FLOAT",
+      "dictType": 0,
+      "remarks": "黑白最小照度"
+    },
+    {
+      "name": "controlHorAngle",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "云台水平角度"
+    },
+    {
+      "name": "controlVerAngle",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "云台垂直角度"
+    },
+    {
+      "name": "controlHorSpeed",
+      "type": "FLOAT",
+      "dictType": 0,
+      "remarks": "云台水平速度"
+    },
+    {
+      "name": "controlVerSpeed",
+      "type": "FLOAT",
+      "dictType": 0,
+      "remarks": "云台垂直速度"
+    },
+    {
+      "name": "guardLevel",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "防护等级"
+    },
+    {
+      "name": "rom",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "存储空间"
+    }]
+},
+{
+  "name": "dev_infoboard",
+  "upperCaseName": "DEV_Infoboard",
+  "simpleName": "infoboard",
+  "upperCaseSimpleName": "Infoboard",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "boardType",
+      "type": "VARCHAR",
+      "dictType": 24,
+      "remarks": "情报板类型"
+    },
+    {
+      "name": "renderArea",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "显示面积"
+    },
+    {
+      "name": "pixelDistance",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "像素中心距离"
+    },
+    {
+      "name": "yellowBright",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "全黄亮度"
+    },
+    {
+      "name": "halfPowerAngle",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "半功角"
+    },
+    {
+      "name": "attenuationRate",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "衰减率"
+    },
+    {
+      "name": "dynamicViewDistance",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "动态视认距离"
+    },
+    {
+      "name": "maxPower",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "峰值功耗"
+    },
+    {
+      "name": "averRage",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "平均功耗"
+    },
+    {
+      "name": "guardWind",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "抗风等级"
+    },
+    {
+      "name": "guardLevel",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "防护等级"
+    }]
+},
+{
+  "name": "dev_operation",
+  "upperCaseName": "DEV_Operation",
+  "simpleName": "operation",
+  "upperCaseSimpleName": "Operation",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "opNo",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "维修记录编号"
+    },
+    {
+      "name": "deviceCode",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "occurTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": "发生时间"
+    },
+    {
+      "name": "fixedTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": "修理时间"
+    },
+    {
+      "name": "faultType",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "故障类型"
+    },
+    {
+      "name": "operator",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "填写人"
+    },
+    {
+      "name": "faultLevel",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "故障级别"
+    },
+    {
+      "name": "reason",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "故障原因"
+    },
+    {
+      "name": "reasonAnalysis",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "原因分析"
+    },
+    {
+      "name": "solution",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "effectLevel",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "影响程度"
+    },
+    {
+      "name": "useList",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "备件使用清单"
+    },
+    {
+      "name": "chargeList",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "维修费用清单"
+    },
+    {
+      "name": "preImage",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "异常图片"
+    },
+    {
+      "name": "nextImage",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "正常图片"
+    },
+    {
+      "name": "creator",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "createTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifier",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifyTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "dev_product",
+  "upperCaseName": "DEV_Product",
+  "simpleName": "product",
+  "upperCaseSimpleName": "Product",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "deviceType",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "code",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "productor",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "dev_slopeStation",
+  "upperCaseName": "DEV_SlopeStation",
+  "simpleName": "slopeStation",
+  "upperCaseSimpleName": "SlopeStation",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "chanelNum",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "通道数量"
+    },
+    {
+      "name": "maxCheckPoint",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "最大检测数量"
+    },
+    {
+      "name": "samplingFrequency",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "采样频率"
+    },
+    {
+      "name": "wavelengthRange",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "波长测量范围"
+    },
+    {
+      "name": "dynamicRange",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "动态范围"
+    },
+    {
+      "name": "wavelengthResolution",
+      "type": "FLOAT",
+      "dictType": 0,
+      "remarks": "波长分辨率"
+    },
+    {
+      "name": "wavelengthRepeat",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "波长重复性"
+    },
+    {
+      "name": "wavelengthAccuracy",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "波长精度"
+    }]
+},
+{
+  "name": "dev_trafficStation",
+  "upperCaseName": "DEV_TrafficStation",
+  "simpleName": "trafficStation",
+  "upperCaseSimpleName": "TrafficStation",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "techType",
+      "type": "VARCHAR",
+      "dictType": 23,
+      "remarks": "技术类型"
+    },
+    {
+      "name": "laneNum",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "车道数量"
+    },
+    {
+      "name": "totalFlowAccuracy",
+      "type": "FLOAT",
+      "dictType": 0,
+      "remarks": "总流量检测精度"
+    },
+    {
+      "name": "laneFlowAccuracy",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "车道流量检测精度"
+    },
+    {
+      "name": "measureRange",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "测量范围"
+    },
+    {
+      "name": "rom",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "存储空间"
+    },
+    {
+      "name": "guardLevel",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "防护等级"
+    }]
+},
+{
+  "name": "dev_weatherStation",
+  "upperCaseName": "DEV_WeatherStation",
+  "simpleName": "weatherStation",
+  "upperCaseSimpleName": "WeatherStation",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "humidityRange",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "湿度范围"
+    },
+    {
+      "name": "humidityAccuracy",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "湿度精度"
+    },
+    {
+      "name": "temperatureRange",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "温度范围"
+    },
+    {
+      "name": "temperatureAccuracy",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "温度精度"
+    },
+    {
+      "name": "startWindSpeed",
+      "type": "FLOAT",
+      "dictType": 0,
+      "remarks": "启动风速"
+    },
+    {
+      "name": "startWindDirection",
+      "type": "FLOAT",
+      "dictType": 0,
+      "remarks": "启动风向"
+    },
+    {
+      "name": "windSpeedRange",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "风速范围"
+    },
+    {
+      "name": "windSpeedAccuracy",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "风速精度"
+    },
+    {
+      "name": "guardWind",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": "防风等级"
+    },
+    {
+      "name": "visibilityRange",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "能见度范围"
+    },
+    {
+      "name": "visibilityAccuracy",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": "能见度精度"
+    }]
+},
+{
+  "name": "pub_dictData",
+  "upperCaseName": "PUB_DictData",
+  "simpleName": "dictData",
+  "upperCaseSimpleName": "DictData",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "dictTypeId",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "value",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "remark",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "creator",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "flag",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "orderNo",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifyTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifier",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "createTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "pub_dictType",
+  "upperCaseName": "PUB_DictType",
+  "simpleName": "dictType",
+  "upperCaseSimpleName": "DictType",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "remark",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "orderNo",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "pub_project",
+  "upperCaseName": "PUB_Project",
+  "simpleName": "project",
+  "upperCaseSimpleName": "Project",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "description",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "pub_road",
+  "upperCaseName": "PUB_Road",
+  "simpleName": "road",
+  "upperCaseSimpleName": "Road",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "pid",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "pids",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "level",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "code",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "sys_organization",
+  "upperCaseName": "SYS_Organization",
+  "simpleName": "organization",
+  "upperCaseSimpleName": "Organization",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "pid",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "pids",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "level",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "keepper",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "mobile",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifyTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifier",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "creator",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "createTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "sys_permission",
+  "upperCaseName": "SYS_Permission",
+  "simpleName": "permission",
+  "upperCaseSimpleName": "Permission",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "parent",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "permission",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "level",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "sys_role",
+  "upperCaseName": "SYS_Role",
+  "simpleName": "role",
+  "upperCaseSimpleName": "Role",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "permissions",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "creator",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "createTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifier",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifyTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    }]
+},
+{
+  "name": "sys_user",
+  "upperCaseName": "SYS_User",
+  "simpleName": "user",
+  "upperCaseSimpleName": "User",
+  "fields": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "orgId",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "username",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "password",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "mobile",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "deleted",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "creator",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "userRoles",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "email",
+      "type": "VARCHAR",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifier",
+      "type": "INTEGER",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "modifyTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    },
+    {
+      "name": "createTime",
+      "type": "TIMESTAMP",
+      "dictType": 0,
+      "remarks": ""
+    }]
+}]
