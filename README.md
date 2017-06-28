@@ -1,4 +1,4 @@
-### easygen
+### easygen v0.0.3
 
 一个灵活的通用代码生成框架
 
@@ -174,6 +174,7 @@ type中db:mysql指定使用内置的mysql构建器，configPath指定构建器�
 }
 ```
 3.2.需要给出的是内置mysql构建器的模型结构，你才能在ftl中使用
+注意：构建器支持的表名和字段命名格式为xx_xx or xx or _xx..
 ```json
 {
   "name": "sys_user", // 原始表名

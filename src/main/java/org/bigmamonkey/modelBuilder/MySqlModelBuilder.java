@@ -109,10 +109,12 @@ public class MySqlModelBuilder implements IModelBuilder<MySqlConfig> {
     /**
      * 获得一个表的主键信息
      */
-    public static String getAllPrimaryKeys(DatabaseMetaData dbMetaData, String tableName) throws SQLException {
+    public static String getAllPrimaryKeys(DatabaseMetaData dbMetaData, String tableName) throws Exception {
 
         ResultSet rs = dbMetaData.getPrimaryKeys(null, null, tableName);
-        rs.next();
+        if (!rs.next()) {
+            throw new Exception(String.format("table:%s don't have primary key", tableName));
+        }
         return rs.getString("COLUMN_NAME");//列名
     }
 }
